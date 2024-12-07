@@ -12,7 +12,7 @@ export const HeaderBar = styled.header`
   padding: 24px;
   height: 186px;
 
-  width: 2031px;
+  width: 100%;
 `
 
 export const LinkRestaurante = styled.a`

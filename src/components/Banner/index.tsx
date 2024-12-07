@@ -1,5 +1,5 @@
 import apresentacao from '../../assets/images/apresentacao.png'
-
-const Banner = () => <img src={apresentacao}></img>
+import { Imagem } from './styles'
+const Banner = () => <Imagem src={apresentacao}></Imagem>
 
 export default Banner
