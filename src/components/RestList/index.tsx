@@ -1,8 +1,8 @@
 import Restaurante from '../Restaurante'
 import { Container, List } from './styles'
-import Restaurantes from '../../models/Restaurantes'
+import type { RestauranteParaLista } from '../../pages/Home'
 export type Props = {
-  restaurantes: Restaurantes[]
+  restaurantes: RestauranteParaLista[]
 }
 const RestList = ({ restaurantes }: Props) => (
   <Container>
@@ -11,6 +11,7 @@ const RestList = ({ restaurantes }: Props) => (
         {restaurantes.map((restaurante) => (
           <Restaurante
             key={restaurante.id}
+            id={restaurante.id}
             title={restaurante.title}
             description={restaurante.description}
             image={restaurante.image}
@@ -23,4 +24,5 @@ const RestList = ({ restaurantes }: Props) => (
     </div>
   </Container>
 )
+
 export default RestList

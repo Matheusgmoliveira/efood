@@ -3,6 +3,7 @@ import { Card, Descricao, Titulo, Infos, Botao } from './styles'
 import { Link } from 'react-router-dom'
 import estrela from '../../assets/images/estrela.png'
 type Props = {
+  id: number
   title: string
   image: string
   description: string
@@ -10,8 +11,15 @@ type Props = {
   infos: string[]
   botao: string
 }
+const getDescricao = (descricao: string) => {
+  if (descricao.length > 184) {
+    return descricao.slice(0, 181) + '...'
+  }
+  return descricao
+}
 
-const Restaurante = ({
+export const Restaurante = ({
+  id,
   title,
   image,
   description,
@@ -34,8 +42,9 @@ const Restaurante = ({
       </ul>
     </div>
 
-    <Descricao>{description}</Descricao>
-    <Link to="/Products">
+    <Descricao>{getDescricao(description)}</Descricao>
+
+    <Link to={`/Products/${id}`}>
       <Botao>{botao}</Botao>
     </Link>
   </Card>

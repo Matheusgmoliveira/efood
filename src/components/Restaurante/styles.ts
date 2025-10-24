@@ -2,8 +2,10 @@ import styled from 'styled-components'
 import { cores } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 export const Card = styled.div`
+  display: block;
   width: 472px;
-  background-color: ${cores.branco};
+
+  background-color: ;
   border: 1px solid ${cores.salmao};
   padding-bottom: 8px;
   margin-bottom: 48px;
@@ -13,9 +15,9 @@ export const Card = styled.div`
   ${TagContainer} {
     margin: 8px;
   }
-  img {
+  > img {
     width: 100%;
-    height: auto;
+    height: 252px;
   }
   div {
     display: flex;
@@ -45,6 +47,7 @@ export const Titulo = styled.h3`
 export const Descricao = styled.p`
   margin: 8px;
   width: 456px;
+  height: 88px;
   font-weight: 400;
   font-size: 14px;
   line-height: 22px;

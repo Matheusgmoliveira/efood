@@ -5,13 +5,21 @@ type Props = {
   image: string
   description: string
   button: string
+  onClick?: () => void
 }
-const Product = ({ button, description, image, title }: Props) => (
+const getDescricao = (descricao: string) => {
+  if (descricao.length > 90) {
+    return descricao.slice(0, 91) + '...'
+  }
+  return descricao
+}
+
+const Product = ({ button, description, image, title, onClick }: Props) => (
   <Card>
     <img src={image} alt={title} />
     <Titulo>{title}</Titulo>
-    <Descricao>{description}</Descricao>
-    <Botao>{button}</Botao>
+    <Descricao>{getDescricao(description)}</Descricao>
+    <Botao onClick={onClick}>{button}</Botao>
   </Card>
 )
 
