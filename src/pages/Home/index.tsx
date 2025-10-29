@@ -6,6 +6,7 @@ import Hero from '../../components/Hero'
 export type RestauranteApi = {
   id: number
   titulo: string
+  tipo: string
   destacado: boolean
   avaliacao: number
   descricao: string

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Imagem } from './styles'
+import { Container, Imagem, Tipo, Titulo } from './styles'
 import { RestauranteApi } from '../../pages/Home'
 
 type BannerProps = {
@@ -16,12 +16,17 @@ const Banner = ({ restauranteId }: BannerProps) => {
 
   if (restaurantes.length === 0) return null
 
-  // Pega o primeiro restaurante que esteja destacado
   const restauranteDestacado = restaurantes.find((r) => r.id === restauranteId)
 
   if (!restauranteDestacado) return null
 
-  return <Imagem src={restauranteDestacado.capa} />
+  return (
+    <Container>
+      <Imagem src={restauranteDestacado.capa} />
+      <Tipo>{restauranteDestacado.tipo}</Tipo>
+      <Titulo>{restauranteDestacado.titulo}</Titulo>
+    </Container>
+  )
 }
 
 export default Banner
