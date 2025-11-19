@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import fundo from '../../assets/images/fundo.png'
 export const HeaderBar = styled.header`
   display: flex;
@@ -24,4 +24,8 @@ export const HeaderBar = styled.header`
     line-height: 42px;
     text-align: center;
   }
+
+   @media (max-width: ${breakpoints.desktop}) {
+    display: none;
+
 `

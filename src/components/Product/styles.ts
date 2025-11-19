@@ -14,9 +14,9 @@ export const Card = styled.div`
 
   img {
     width: 304px;
-    height: 167px; /* corrigido */
+    height: 167px;
     margin: 8px;
-    object-fit: cover; /* mantém proporção sem distorcer */
+    object-fit: cover;
   }
 `
 
@@ -29,13 +29,13 @@ export const Titulo = styled.h3`
 
 export const Descricao = styled.p`
   width: 304px;
-  height: 88px; /* corrigido */
+  height: 88px;
   margin: 8px;
   font-weight: 400;
   font-size: 14px;
   line-height: 22px;
   color: ${cores.rosaClaro};
-  overflow: hidden; /* corta texto que ultrapassar */
+  overflow: hidden;
 `
 
 export const Botao = styled.button`

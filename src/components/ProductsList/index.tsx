@@ -1,5 +1,7 @@
 import Product from '../Product'
+import { useDispatch } from 'react-redux'
 import { useState } from 'react'
+import { add, open } from '../../store/reducers/cart'
 import {
   Banner,
   Container,
@@ -17,9 +19,9 @@ import close from '../../assets/images/close 1.png'
 
 export type Produto = {
   id: number
-  title: string
-  description: string
-  image: string
+  nome: string
+  descricao: string
+  foto: string
   button: string
   preco: number
   porcao?: string
@@ -28,6 +30,11 @@ export type Produto = {
 export type Props = {
   products: Produto[]
 }
+export const formataPreco = (valor: number) =>
+  valor.toLocaleString('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  })
 
 const ProductsList = ({ products }: Props) => {
   const [modalEstaAberto, setModalEstaAberto] = useState(false)
@@ -44,6 +51,14 @@ const ProductsList = ({ products }: Props) => {
     setModalEstaAberto(false)
     setProdutoSelecionado(null)
   }
+  const dispatch = useDispatch()
+  const addToCart = () => {
+    if (produtoSelecionado) {
+      dispatch(add(produtoSelecionado))
+      dispatch(open())
+      fecharModal()
+    }
+  }
 
   return (
     <>
@@ -53,9 +68,9 @@ const ProductsList = ({ products }: Props) => {
             {products.map((produto) => (
               <Product
                 key={produto.id}
-                title={produto.title}
-                description={produto.description}
-                image={produto.image}
+                title={produto.nome}
+                description={produto.descricao}
+                image={produto.foto}
                 button={produto.button}
                 onClick={() => abrirModal(produto)} // 👈 Aqui passa o produto clicado
               />
@@ -70,20 +85,20 @@ const ProductsList = ({ products }: Props) => {
             <Banner>
               <Close src={close} onClick={fecharModal} />
 
-              <ImagemProduto src={produtoSelecionado.image} />
+              <ImagemProduto src={produtoSelecionado.foto} />
 
               <div>
-                <Nome>{produtoSelecionado.title}</Nome>
+                <Nome>{produtoSelecionado.nome}</Nome>
 
-                <Detalhes>{produtoSelecionado.description}</Detalhes>
+                <Detalhes>{produtoSelecionado.descricao}</Detalhes>
 
                 {produtoSelecionado.porcao && (
                   <Informacao>Serve: {produtoSelecionado.porcao}</Informacao>
                 )}
 
-                <BotaoCarrinho>
-                  Adicionar ao carrinho — R$
-                  {produtoSelecionado.preco.toFixed(2)}
+                <BotaoCarrinho onClick={addToCart}>
+                  Adicionar ao carrinho —
+                  {formataPreco(produtoSelecionado.preco)}
                 </BotaoCarrinho>
               </div>
             </Banner>

@@ -13,11 +13,12 @@ export const Container = styled.footer`
 `
 
 export const Descricao = styled.p`
-  width: 480px;
+  width: 100%;
   height: 24px;
   margin-top: 80px;
   font-weigth: 400;
   font-size: 10px;
   text-align: center;
   color: ${cores.salmao};
+  flex-wrap: wrap;
 `

@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import fundo from '../../assets/images/fundo.png'
 export const HeaderBar = styled.header`
-  display: flex;
+  display: none;
 
   justify-content: space-between;
   align-items: center;
@@ -10,9 +10,12 @@ export const HeaderBar = styled.header`
   background-image: url(${fundo});
   background-size: cover;
   padding: 24px;
-  height: 186px;
+  height: 86px;
 
   width: 100%;
+
+
+  }
 `
 
 export const LinkRestaurante = styled.a`

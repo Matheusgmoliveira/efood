@@ -1,22 +1,25 @@
-import { useEffect, useState } from 'react'
 import { Container, Imagem, Tipo, Titulo } from './styles'
-import { RestauranteApi } from '../../pages/Home'
+import { useGetRestaurantesQuery } from '../../services/api'
+
+type Restaurante = {
+  id: number
+  titulo: string
+  tipo: string
+  capa: string
+}
 
 type BannerProps = {
   restauranteId: number | null
 }
+
 const Banner = ({ restauranteId }: BannerProps) => {
-  const [restaurantes, setRestaurantes] = useState<RestauranteApi[]>([])
+  const { data: restaurantes = [], isLoading } = useGetRestaurantesQuery()
 
-  useEffect(() => {
-    fetch('https://api-ebac.vercel.app/api/efood/restaurantes')
-      .then((res) => res.json())
-      .then((res) => setRestaurantes(res))
-  }, [])
+  if (isLoading || restaurantes.length === 0) return null
 
-  if (restaurantes.length === 0) return null
-
-  const restauranteDestacado = restaurantes.find((r) => r.id === restauranteId)
+  const restauranteDestacado = restaurantes.find(
+    (r: Restaurante) => r.id === restauranteId
+  )
 
   if (!restauranteDestacado) return null
 
