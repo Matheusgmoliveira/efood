@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { breakpoints, cores } from '../../styles'
+import { cores } from '../../styles'
 import fundo from '../../assets/images/fundo.png'
 export const HeaderBar = styled.header`
-  display: none;
+  display: flex;
 
   justify-content: space-between;
   align-items: center;
